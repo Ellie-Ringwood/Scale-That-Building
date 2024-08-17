@@ -36,9 +36,9 @@ public class PlayerScript : NetworkBehaviour
         SubmitPositionRequestRpc();
     }
 
-    //[Rpc(SendTo.Server)]
-    // void SubmitPositionRequestRpc(RpcParams rpcParams = default)
-    void SubmitPositionRequestRpc()
+    [Rpc(SendTo.Server)]
+    void SubmitPositionRequestRpc(RpcParams rpcParams = default)
+    //void SubmitPositionRequestRpc()
     {
         Debug.Log("Random");
         var randomPosition = GetRandomPositionOnPlane();

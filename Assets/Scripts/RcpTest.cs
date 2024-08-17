@@ -15,7 +15,8 @@ public class RpcTest : NetworkBehaviour
         }
     }
 
-    // [Rpc(SendTo.ClientsAndHost)]
+ 
+    [Rpc(SendTo.ClientsAndHost)]
     void ClientAndHostRpc(int value, ulong sourceNetworkObjectId)
     {
         Debug.Log($"Client Received the RPC #{value} on NetworkObject #{sourceNetworkObjectId}");
@@ -25,7 +26,7 @@ public class RpcTest : NetworkBehaviour
         }
     }
 
-  //  [Rpc(SendTo.Server)]
+    [Rpc(SendTo.Server)]
     void ServerOnlyRpc(int value, ulong sourceNetworkObjectId)
     {
         Debug.Log($"Server Received the RPC #{value} on NetworkObject #{sourceNetworkObjectId}");

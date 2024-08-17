@@ -64,6 +64,3 @@ public class Manager : MonoBehaviour
     }
 
 }
-
-
-//namespace HelloWorld
