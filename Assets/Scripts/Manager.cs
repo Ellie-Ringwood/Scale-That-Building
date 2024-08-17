@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
             StatusLabels();
 
             SubmitNewPosition();
+            getInput();
         }
 
         GUILayout.EndArea();
@@ -52,15 +53,35 @@ public class Manager : MonoBehaviour
             if (m_NetworkManager.IsServer && !m_NetworkManager.IsClient)
             {
                 foreach (ulong uid in m_NetworkManager.ConnectedClientsIds)
-                  m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<PlayerScript>().Move();
+                  m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<PlayerScript>().RandomMove();
             }
             else
             {
                 var playerObject = m_NetworkManager.SpawnManager.GetLocalPlayerObject();
                 var player = playerObject.GetComponent<PlayerScript>();
-                player.Move();
+                player.RandomMove();
             }
         }
     }
+
+    static void getInput()
+    {
+        if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Horizontal") != 0))
+            {
+                if (m_NetworkManager.IsServer && !m_NetworkManager.IsClient)
+                {
+                    foreach (ulong uid in m_NetworkManager.ConnectedClientsIds)
+                            m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<PlayerScript>().Move();
+                }
+                else
+                {
+                        var playerObject = m_NetworkManager.SpawnManager.GetLocalPlayerObject();
+                        var player = playerObject.GetComponent<PlayerScript>();
+                        player.Move();
+                    
+                }
+            }
+    }
+
 
 }
