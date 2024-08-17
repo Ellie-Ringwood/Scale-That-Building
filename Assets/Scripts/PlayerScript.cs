@@ -1,33 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Material Red;
+    public Material Blue;
+    public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
+    private void Start()
     {
-        
+        if (IsHost)
+        {
+            this.GetComponent<MeshRenderer>().material = Red;
+        }
+        else if (IsClient)
+        {
+            this.GetComponent<MeshRenderer>().material = Blue;
+        }
+
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwner)
+        {
+            Move();
+        }
     }
 
     public void Move()
     {
-        var x = 10;
-
-        transform.Translate(x, 0, 0);
-        Debug.Log("Move");
+        //SubmitPositionRequestRpc();
     }
 
-    // Update is called once per frame
+    //[Rpc(SendTo.Server)]
+    // void SubmitPositionRequestRpc(RpcParams rpcParams = default)
+    void SubmitPositionRequestRpc()
+    {
+        Debug.Log("Random");
+        var randomPosition = GetRandomPositionOnPlane();
+        transform.position = randomPosition;
+        Position.Value = randomPosition;
+    }
+
+    static Vector3 GetRandomPositionOnPlane()
+    {
+        return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
+    }
+
     void Update()
     {
-        var x = Input.GetAxis("Horizontal") * 0.1f;
-        var z = Input.GetAxis("Vertical") * 0.1f;
+        if (IsOwner)
+        {
+            var x = Input.GetAxis("Horizontal") * 0.1f;
+            var z = Input.GetAxis("Vertical") * 0.1f;
 
-        transform.Translate(x, 0, z);
-    }
-    void OnMove()
-    {
-        Debug.Log("Input");
+            transform.Translate(x, 0, z);
+        }
+        //transform.position = Position.Value;
     }
 }
