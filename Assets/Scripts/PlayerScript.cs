@@ -10,15 +10,17 @@ public class PlayerScript : NetworkBehaviour
     public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
     private void Start()
     {
-        if (IsHost)
+        if (IsOwner)
         {
-            this.GetComponent<MeshRenderer>().material = Red;
+            if (IsHost)
+            {
+                GetComponent<MeshRenderer>().material = Red;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material = Blue;
+            }
         }
-        else if (IsClient)
-        {
-            this.GetComponent<MeshRenderer>().material = Blue;
-        }
-
     }
 
     public override void OnNetworkSpawn()
@@ -31,7 +33,7 @@ public class PlayerScript : NetworkBehaviour
 
     public void Move()
     {
-        //SubmitPositionRequestRpc();
+        SubmitPositionRequestRpc();
     }
 
     //[Rpc(SendTo.Server)]
@@ -58,6 +60,6 @@ public class PlayerScript : NetworkBehaviour
 
             transform.Translate(x, 0, z);
         }
-        //transform.position = Position.Value;
+        transform.position = Position.Value;
     }
 }
