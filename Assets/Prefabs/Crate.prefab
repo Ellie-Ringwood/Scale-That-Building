@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7008260517090659379}
   - component: {fileID: 3242822643516859832}
   - component: {fileID: 3163142488511436814}
-  - component: {fileID: 4183862688370976173}
+  - component: {fileID: -6685280934770990356}
+  - component: {fileID: 4335604151574977065}
   m_Layer: 0
   m_Name: Crate
-  m_TagString: Untagged
+  m_TagString: PreviewObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4183862688370976173
+--- !u!114 &-6685280934770990356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205723636189765046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c242db6852b6a4688c2128c1b00aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveable: 1
+--- !u!65 &4335604151574977065
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

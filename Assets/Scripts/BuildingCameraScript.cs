@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingScript : MonoBehaviour
+public class BuildingCameraScript : MonoBehaviour
 {
     public float rotateSpeed = 0.1f;
     public float moveSpeed = 0.06f;
@@ -34,9 +34,9 @@ public class BuildingScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0,- rotateSpeed, 0);
+            transform.Rotate(0, -rotateSpeed, 0);
         }
-        
+
     }
 
 
