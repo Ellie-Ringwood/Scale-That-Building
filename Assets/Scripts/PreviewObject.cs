@@ -6,10 +6,12 @@ using UnityEngine.UIElements;
 public class PreviewObject : MonoBehaviour
 {
     public bool moveable = true;
+    public Material placedMaterial;
+    public GameObject buildManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        buildManager = GameObject.FindGameObjectWithTag("BuildManager");
     }
 
     // Update is called once per frame
@@ -28,10 +30,13 @@ public class PreviewObject : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonDown(0))
+        if ((Input.GetMouseButtonDown(0))&&(moveable == true))
         {
+            GetComponent<MeshRenderer>().material = placedMaterial;
             moveable = false;
             this.tag = "Untagged";
+            new WaitForSeconds(1);
+            buildManager.GetComponent<BuildManangerScript>().newObject();
         }
     }
 }
