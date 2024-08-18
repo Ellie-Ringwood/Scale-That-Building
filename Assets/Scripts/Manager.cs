@@ -6,9 +6,13 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     static private NetworkManager m_NetworkManager;
+    public int numPlayers;
+    public int maxPlayers = 4;
+
     void Awake()
     {
         m_NetworkManager = GetComponent<NetworkManager>();
+        numPlayers = 0;
     }
 
     void OnGUI()
@@ -21,7 +25,7 @@ public class Manager : MonoBehaviour
         else
         {
             StatusLabels();
-
+            GUILayout.Label("Players: " + numPlayers + "/" + maxPlayers);
             SubmitNewPosition();
             getInput();
         }
@@ -83,5 +87,12 @@ public class Manager : MonoBehaviour
             }
     }
 
+    private void Update()
+    {
+        if (m_NetworkManager.IsServer)
+        {
+            numPlayers = m_NetworkManager.ConnectedClients.Count;
+        }
+    }
 
 }

@@ -13,7 +13,6 @@ public class PlayerScript : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        
         if (IsOwner)
         {
             if (IsHost)
@@ -24,8 +23,8 @@ public class PlayerScript : NetworkBehaviour
             {
                 GetComponent<MeshRenderer>().material = Blue;
             }
-            //Move();
         }
+        Debug.Log("player");
     }
 
     public void RandomMove()
