@@ -8,8 +8,10 @@ public class BuildingCameraScript : MonoBehaviour
     public float moveSpeed = 0.06f;
 
 
-    void changeCams()
+    public void changeCam()
     {
+        Debug.Log(this.name);
+        this.gameObject.SetActive(false);
     }
 
     void Update()

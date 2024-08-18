@@ -57,12 +57,12 @@ public class Manager : MonoBehaviour
             if (m_NetworkManager.IsServer && !m_NetworkManager.IsClient)
             {
                 foreach (ulong uid in m_NetworkManager.ConnectedClientsIds)
-                  m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<PlayerScript>().RandomMove();
+                  m_NetworkManager.SpawnManager.GetPlayerNetworkObject(uid).GetComponent<PlayerNetwork>().RandomMove();
             }
             else
             {
                 var playerObject = m_NetworkManager.SpawnManager.GetLocalPlayerObject();
-                var player = playerObject.GetComponent<PlayerScript>();
+                var player = playerObject.GetComponent<PlayerNetwork>();
                 player.RandomMove();
             }
         }

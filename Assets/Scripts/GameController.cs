@@ -5,24 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public float targetTime = 10.0f;
+    private float buildTime = 10.0f;
+    private float playTime = 60.0f;
     public float timer;
     public float countdown;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool buildPhase = true;
+    public GameObject buildingCamera;
+    public GameObject buildManager;
+
+    public GameObject player;
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        countdown = targetTime - timer;
-         
-        if (countdown <= 0)
+        if (buildPhase)
         {
-            timerEnded();
+            countdown = buildTime - timer;
+        }
+        else
+        {
+            countdown = playTime - timer;
+        }
+         
+        if (countdown < 0)
+        {
+            if (buildPhase)
+            {
+                timerEnded();
+            }
         }
     }
 
@@ -45,7 +56,14 @@ public class GameController : MonoBehaviour
 
     void timerEnded()
     {
-        Debug.Log("end");
-        //do your stuff here.
+        Vector3 v = new Vector3(40, 1, 40);
+        GameObject newPlayer = Instantiate(player, v, Quaternion.identity) as GameObject;
+        newPlayer.transform.position = v;
+        timer = 0;
+        buildPhase = false;
+        buildingCamera.SetActive(false);
+        //buildingCamera.GetComponent<BuildingCameraScript>().changeCam();
+        buildManager.GetComponent<BuildManangerScript>().DestroyUnbuiltObject();
+        
     }
 }
