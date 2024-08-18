@@ -1565,7 +1565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8794e10a2348b5c4d9bbfec4e1ca3d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crate: {fileID: 5205723636189765046, guid: c637d24fa68853743b74f5e99cf88b55, type: 3}
+  objects:
+  - {fileID: 5205723636189765046, guid: c637d24fa68853743b74f5e99cf88b55, type: 3}
+  - {fileID: 5757469463324509065, guid: bed43f2c95dc30e4a9f7fa8a55c61b86, type: 3}
 --- !u!4 &1241284838
 Transform:
   m_ObjectHideFlags: 0
@@ -2117,6 +2119,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3163142488511436814, guid: c637d24fa68853743b74f5e99cf88b55, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1675d43af9eebfc409753196cde08444, type: 2}
     - target: {fileID: 4335604151574977065, guid: c637d24fa68853743b74f5e99cf88b55, type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 256596830074607366}
   - component: {fileID: 4821696404478568887}
   - component: {fileID: 2639799327528287925}
+  - component: {fileID: 6506833464652495529}
   m_Layer: 0
   m_Name: LongCrate
-  m_TagString: Untagged
+  m_TagString: PreviewObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5bf2dc3218845fc4898063caa4d8e848, type: 2}
+  - {fileID: 2100000, guid: 1675d43af9eebfc409753196cde08444, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6506833464652495529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757469463324509065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c242db6852b6a4688c2128c1b00aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveable: 1
+  placedMaterial: {fileID: 2100000, guid: 5bf2dc3218845fc4898063caa4d8e848, type: 2}
+  buildManager: {fileID: 0}

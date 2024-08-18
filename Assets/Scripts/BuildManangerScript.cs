@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class BuildManangerScript : MonoBehaviour
 {
-    public GameObject crate;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    public GameObject[] objects;
 
     public void newObject()
     {
-        Instantiate(crate, new Vector3(0, 0, 0), Quaternion.identity);
+        int num = Random.Range(0, objects.Length);
+        Instantiate(objects[num], new Vector3(0, 0, 0), Quaternion.identity);
     }
 }
